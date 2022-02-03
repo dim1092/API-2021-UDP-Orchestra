@@ -108,13 +108,14 @@ Reminder: answer the following questions [here](https://forms.gle/6SM7cu4cYhNsRv
 | Question | How can we represent the system in an **architecture diagram**, which gives information both about the Docker containers, the communication protocols and the commands? |
 |          | _Insert your diagram here..._                                                                                                                                           |
 | Question | Who is going to **send UDP datagrams** and **when**?                                                                                                                    |
-|          | _Enter your response here..._                                                                                                                                           |
+|          | _Musicians will send datagrams containing their id and a sound_                                                                                                                                           |
 | Question | Who is going to **listen for UDP datagrams** and what should happen when a datagram is received?                                                                        |
-|          | _Enter your response here..._                                                                                                                                           |
+|          | _The auditor is going to listen for datagrams, when one is received, or he will add it to the musician list, or update the time of "last heard"_                                                                                                                                           |
 | Question | What **payload** should we put in the UDP datagrams?                                                                                                                    |
-|          | _Enter your response here..._                                                                                                                                           |
+|          | _The uuid (unique user id) and a "sound"._                                                                                                                                           |
 | Question | What **data structures** do we need in the UDP sender and receiver? When will we update these data structures? When will we query these data structures?                |
-|          | _Enter your response here..._                                                                                                                                           |
+|          | _Dans le musician : une map pour determiner le type du sond celon l'instrument, un muscicien contenant un id et un son emis
+Dans audotor : Une map pour determiner l'instrument celon le son emis, une map qui contient les son/musicien recus. UN array qui contient les musicien actif a envoyer pour le server TCP._                                                                                                                                           |
 
 ## Task 2: implement a "musician" Node.js application
 
@@ -142,17 +143,17 @@ Reminder: answer the following questions [here](https://forms.gle/6SM7cu4cYhNsRv
 | #        | Topic                                                                               |
 | -------- | ----------------------------------------------------------------------------------- |
 | Question | How do we **define and build our own Docker image**?                                |
-|          | _Enter your response here..._                                                       |
+|          | _En creeant un docker file avec les intructions necessaire pour nos images, puis en executant la commande docker build sur notre dockerfile_                                                       |
 | Question | How can we use the `ENTRYPOINT` statement in our Dockerfile?                        |
-|          | _Enter your response here..._                                                       |
+|          | _L''ENTRYPOINT' determine que faire au demarage de l'image. Nous determinon nos fichiers .js pour que nos auditor et musician sonient lancer au demarage de notre machine virtuelle _                                                       |
 | Question | After building our Docker image, how do we use it to **run containers**?            |
-|          | _Enter your response here..._                                                       |
+|          | _Il faut utiliser la comande docker run. Celle-ci va demmarer une machine virtuelles._                                                       |
 | Question | How do we get the list of all **running containers**?                               |
-|          | _Enter your response here..._                                                       |
+|          | _docker ps_                                                       |
 | Question | How do we **stop/kill** one running container?                                      |
-|          | _Enter your response here..._                                                       |
+|          | _docker kill <container_name>_                                                       |
 | Question | How can we check that our running containers are effectively sending UDP datagrams? |
-|          | _Enter your response here..._                                                       |
+|          | _On peut utiliser wire shack. On peut aussi faire un console.log() lorsque notre serveur recois un datagramme._                                                       |
 
 ## Task 4: implement an "auditor" Node.js application
 
@@ -174,7 +175,9 @@ Reminder: answer the following questions [here](https://forms.gle/6SM7cu4cYhNsRv
 | #        | Topic                                                                                |
 | -------- | ------------------------------------------------------------------------------------ |
 | Question | How do we validate that the whole system works, once we have built our Docker image? |
-|          | _Enter your response here..._                                                        |
+|          | _Nous lançons un auditor et plusieurs musicians, et verifions les logs. 
+(Notre auditor affiche un message a chaque son recu et nos musician quand un son est envoye).
+Un script de validation nous a aussi ete donner qu nous lançons depuis un terminal et verifie que notre travail soit conforme._                                                        |
 
 ## Constraints
 
