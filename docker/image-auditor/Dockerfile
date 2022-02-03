@@ -2,13 +2,10 @@
 FROM node:latest
 
 # Set workiing directory
-WORKDIR /opt/app
+WORKDIR /opt/app/
 
 # Copy our source file o the docker image
 COPY src ./
 
-# Install Node modules
-RUN npm install
-
 # Start our musician script
-ENRYPOINT ["node", "auditor.js"]
+ENTRYPOINT ["node", "auditor.js"]
